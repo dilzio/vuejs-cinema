@@ -27,6 +27,7 @@
         components: {
             CheckFilter
         }
+
     }
 </script>
 
