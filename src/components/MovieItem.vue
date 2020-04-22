@@ -5,7 +5,9 @@
         </div>
         <div class="movie-col-right">
             <div class="movie-title">
-                <h2>{{movie.Title}}</h2>
+                <router-link v-bind:to="{name:'movie', params: {id: movie.imdbID}}">
+                    <h2>{{movie.Title}}</h2>
+                </router-link>
                 <span class="movie-rating">{{movie.Rated}}</span>
             </div>
             <div class="movie-sessions">
@@ -22,12 +24,12 @@
 
     export default {
         name: "MovieItem",
-        props: ['movie','sessions', 'day', 'time'],
+        props: ['movie', 'sessions', 'day', 'time'],
         methods: {
-            formatSessionTime(raw){
+            formatSessionTime(raw) {
                 return this.$moment(raw).format('h:mm A');
             },
-            filteredSessions(sessions){
+            filteredSessions(sessions) {
                 return sessions.filter(this.sessionPassesTimeFilter);
             },
             sessionPassesTimeFilter(session) {
